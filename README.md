@@ -20,3 +20,5 @@
 - [ ] score
 ### shop
 - [ ] skins
+
+Wiki Pygame https://pygame.readthedocs.io/en/latest/1_intro/intro.html
