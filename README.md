@@ -1,5 +1,6 @@
 # flappy_ship
 Flappy ship é um jogo feito em python usando framework Pygame.
+
 Wiki Pygame: https://pygame.readthedocs.io/en/latest/1_intro/intro.html
 
 Primeira sprint 22/05
