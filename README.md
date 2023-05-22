@@ -33,12 +33,12 @@ $ python menu.py
 
 # Backlog
 ### Menu
-- [ ] Nome do jogo
-- [ ] Historia
-- [ ] Endless (Modo sem fim) 
-- [ ] Loja
-- [ ] Estatísticas
-- [ ] Sair
+- [x] Nome do jogo
+- [x] Historia
+- [x] Endless (Modo sem fim) 
+- [x] Loja
+- [x] Estatísticas
+- [x] Sair
 ### Mecânica
 - [ ] Controles
 - [ ] Sprites
@@ -48,7 +48,7 @@ $ python menu.py
 - [ ] Tiro
 - [ ] Dano
 - [ ] Colisão
-- [ ] Velocidade
+- [x] Velocidade
 - [ ] Score
 ### Imagens & Design
 - [ ] Player
