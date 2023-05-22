@@ -5,21 +5,32 @@ from sprites import BG
 
 pygame.init()
 
-monitor = [pygame.display.Info().current_h, pygame.display.Info().current_w]
 fullscreen = False
-tela = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
+screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
 pygame.display.set_caption('Flappy Ship')
 clock = pygame.time.Clock()
 
+min_y_player = 0
+max_y_player = sh/1.5
+
 x_player = (sw/1.5) / 4
 y_player = (sh/1.5) / 4
-gravidade = 0
+gravity = 0
 
 while True:
     clock.tick(framerate)
-    tela.fill((0,0,0))
-    y_player += gravidade
-    gravidade += 0.5
+    screen.fill((0,0,0))
+    y_player += gravity
+    gravity += 0.5
+
+    if y_player >= max_y_player - 41 and gravity > 0:
+        pygame.quit()
+        exit()
+        pass
+
+    if y_player <= min_y_player and gravity < 0:
+        y_player = min_y_player
+        gravity = 0
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -28,22 +39,25 @@ while True:
         
         if event.type == VIDEORESIZE:
             if not fullscreen:
-                tela = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
+                screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 x_player = event.w / 4
+                max_y_player = event.h
 
         if event.type == KEYDOWN:  
             if event.key == K_F11:
                 fullscreen = not fullscreen
                 if fullscreen:
-                    tela = pygame.display.set_mode((sw, sh), pygame.FULLSCREEN)
+                    screen = pygame.display.set_mode((sw, sh), pygame.FULLSCREEN)
                     x_player = sw/4
+                    max_y_player = sh
                 else:
-                    tela = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
+                    screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
                     x_player = (sw/1.5)/4
+                    max_y_player = sh/1.5
 
             if event.key == K_SPACE or event.key == K_w:
-                gravidade = 0
-                gravidade -= 10
+                gravity = 0
+                gravity -= 10
 
-    pygame.draw.rect(tela, (0, 0, 255), (x_player, y_player, 40, 40))
+    pygame.draw.rect(screen, (0, 0, 255), (x_player, y_player, 40, 40))
     pygame.display.update()
