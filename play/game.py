@@ -12,18 +12,25 @@ screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
 pygame.display.set_caption('Flappy Ship')
 clock = pygame.time.Clock()
 
-##shot##
-missil = pygame.imagem.load("../img/fire.png").convert_alpha()
-missil = pygame.transform.scale(missil, (25,25))
-missil = pygame.transform.rotate(missil, -45)
-
+###shot##
+#missil = pygame.imagem.load("../img/fire.png").convert_alpha()
+#missil = pygame.transform.scale(missil, (25,25))
+#missil = pygame.transform.rotate(missil, -45)
+bif = 'play/img/bg.png'
 ##background##
-bg = pygame.imagem.load().convert_alpha()
-bg = pygame.transform.scale(bg, (x,y))
+bgw = sw/1.5
+bgh = sh/1.5
+bg =  pygame.image.load(bif).convert_alpha()
+bg = pygame.transform.scale(bg, (bgw,bgh))
 
 ##Obstacle##
-obstacle = pygame.imagem.load("../img/fire.png").convert_alpha()
-obstacle = pygame.transform.scale(obstacle, (0,0))
+#obstacle = pygame.image.load("../img/fire.png").convert_alpha()
+#obstacle = pygame.transform.scale(obstacle, (0,0))
+
+##img_Nave##
+#player_nave = pygame.image.load("../img/fire.png").convert_alpha()
+#player_nave = pygame.transform.scale(player_nave, (50,50))
+#player_nave = pygame.transform.rotate(player_nave, -45)
 
 ##player max possion##
 min_y_player = 0
@@ -51,9 +58,17 @@ while True:
         pygame.quit()
         exit()
         pass
-
-    screen.blit(bg, (0,0))
     
+    
+    screen.blit(bg, (0,0))
+
+    #rel_x = x % bg.get_rect().width
+    #screen.blit(bg, (rel_x - bg.get_react().width,0)) #criar backgroud
+    #if rel_x < 1200:
+    #    screen.blit(bg, (rel_x,0))
+
+    #    x -= 2 #a velocidade do background
+
     ##dont pass of screen##
     if y_player <= min_y_player and gravity < 0:
         y_player = min_y_player
@@ -71,6 +86,9 @@ while True:
                 screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 x_player = event.w / 4
                 max_y_player = event.h
+                bgw = event.w
+                bgh = event.h
+                bg = pygame.transform.scale(bg, (bgw,bgh))
 
         ##teclas##
         if event.type == KEYDOWN:  
@@ -81,10 +99,16 @@ while True:
                     screen = pygame.display.set_mode((sw, sh), pygame.FULLSCREEN)
                     x_player = sw/4
                     max_y_player = sh
+                    bgw = sw
+                    bgh = sh
+                    bg = pygame.transform.scale(bg, (bgw,bgh))
                 else:
                     screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
                     x_player = (sw/1.5)/4
                     max_y_player = sh/1.5
+                    bgw = sw/1.5
+                    bgh = sh/1.5
+                    bg = pygame.transform.scale(bg, (bgw,bgh))
             ##Jump##
             if event.key == K_SPACE or event.key == K_w:
                 gravity = 0
@@ -94,84 +118,84 @@ while True:
     pygame.display.update()
 
 
-#foto da imagem do missil
-
-
-
-#velocidade do missil
-
-#crinado imagem
-screen.blit(missil,(pos_x_missil,pos_y_missil))
-screen.blit(playimg,(x_player,y_player))
-
-
-#tecla do tiro
-tecla = pygame.key.get_pressed()
-if tecla[pygame.K_UP] and y_player > 1:
-    y_player -=1
-    pos_y_missil -=1
-
-if tecla[pygame.K_DOMW] and y_player > 650:
-    y_player -=1
-
-    if not triggered:
-        pos_y_missil -=1 #para ele ter mobvimento proprio
-
-
-#tecla do tiro
-if tecla[pygame.K_SPACE]:
-    triggered = True
-    vel_x_missil = 2
-
-#movimento do missil
-pos_x_missil += vel_x_missil
-
-
-#respawm do missil
-def respawn_missil():
-    triggered = False
-    respawn_missil_x = x_player
-    respawn_missil_y = y_player
-    vel_x_missil = 0
-    return [respawn_missil_x, respawn_missil_y, triggered, vel_x_missil]
-
-
-if pos_x_missil == 300:
-    pos_x_missil, pos_y_missil, triggered, vel_x_missil = respawn_missil()
-
-
-#aqui eles vão para de ser apenas imagens e vão começa a relamente ser objetos
-player_rect = playimg.get_rect()
-pilar_rect = pilar.get_rect()
-missil_rect= missil.get_rect()
-
-# aqui vai forma um retangulo para de referencia de como vai ser, e iso vai ter que fica dentro do loop
-
-player_rect.y = y_player
-player_rect.x = x_player
-
-missil_rect.x = pos_x_missil
-missil_rect.y = pos_y_missil
-
-pilar_rect.x = pilar_x
-pilar_react.y = pilar_y
-
-pygame.draw.rect(screen, (255, 0, 0), missil_rect 4)
-pygame.draw.rect(screen, (255, 0, 0), player_rect 4)
-pygame.draw.rect(screen, (255, 0, 0), pilar_rect 4)
-
-#função para criar a colissão
-
-def colisions():
-    global score
-    if player_rect.colliderect(pilar_rect):
-        break
-        menu() #aqui to pensado em quanto tiver a colissão entre a nave e o menu para o jogo e ir direto para o menu
-    elif missil_rect.colliderect(pilar_rect):
-        score += 1
-        return True #aqui se tiver a parade que quebra vamos fazer o play ganha mais pontos por ter quebrando ela
-    else:
-        return False
-
-#colocar a musica no jogo, barulho do missil, nave, musica de fundo
-pygame.mixer.music.load()
+##foto da imagem do missil
+#
+#
+#
+##velocidade do missil
+#
+##crinado imagem
+#screen.blit(missil,(pos_x_missil,pos_y_missil))
+#screen.blit(playimg,(x_player,y_player))
+#
+#
+##tecla do tiro
+#tecla = pygame.key.get_pressed()
+#if tecla[pygame.K_UP] and y_player > 1:
+#    y_player -=1
+#    pos_y_missil -=1
+#
+#if tecla[pygame.K_DOMW] and y_player > 650:
+#    y_player -=1
+#
+#    if not triggered:
+#        pos_y_missil -=1 #para ele ter mobvimento proprio
+#
+#
+##tecla do tiro
+#if tecla[pygame.K_SPACE]:
+#    triggered = True
+#    vel_x_missil = 2
+#
+##movimento do missil
+#pos_x_missil += vel_x_missil
+#
+#
+##respawm do missil
+#def respawn_missil():
+#    triggered = False
+#    respawn_missil_x = x_player
+#    respawn_missil_y = y_player
+#    vel_x_missil = 0
+#    return [respawn_missil_x, respawn_missil_y, triggered, vel_x_missil]
+#
+#
+#if pos_x_missil == 300:
+#    pos_x_missil, pos_y_missil, triggered, vel_x_missil = respawn_missil()
+#
+#
+##aqui eles vão para de ser apenas imagens e vão começa a relamente ser objetos
+#player_rect = playimg.get_rect()
+#pilar_rect = pilar.get_rect()
+#missil_rect= missil.get_rect()
+#
+## aqui vai forma um retangulo para de referencia de como vai ser, e iso vai ter que fica dentro do loop
+#
+#player_rect.y = y_player
+#player_rect.x = x_player
+#
+#missil_rect.x = pos_x_missil
+#missil_rect.y = pos_y_missil
+#
+#pilar_rect.x = pilar_x
+#pilar_react.y = pilar_y
+#
+#pygame.draw.rect(screen, (255, 0, 0), missil_rect 4)
+#pygame.draw.rect(screen, (255, 0, 0), player_rect 4)
+#pygame.draw.rect(screen, (255, 0, 0), pilar_rect 4)
+#
+##função para criar a colissão
+#
+#def colisions():
+#    global score
+#    if player_rect.colliderect(pilar_rect):
+#        break
+#        menu() #aqui to pensado em quanto tiver a colissão entre a nave e o menu para o jogo e ir direto para o menu
+#    elif missil_rect.colliderect(pilar_rect):
+#        score += 1
+#        return True #aqui se tiver a parade que quebra vamos fazer o play ganha mais pontos por ter quebrando ela
+#    else:
+#        return False
+#
+##colocar a musica no jogo, barulho do missil, nave, musica de fundo
+#pygame.mixer.music.load()
