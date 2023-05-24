@@ -12,24 +12,28 @@ screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
 pygame.display.set_caption('Flappy Ship')
 clock = pygame.time.Clock()
 
-###shot##
-#missil = pygame.imagem.load("../img/fire.png").convert_alpha()
-#missil = pygame.transform.scale(missil, (25,25))
-#missil = pygame.transform.rotate(missil, -45)
-bif = 'play/img/bg.png'
 ##background##
+bif = 'play/img/bg.png'
+
 bgw = sw/1.5
 bgh = sh/1.5
 bg =  pygame.image.load(bif).convert_alpha()
 bg = pygame.transform.scale(bg, (bgw,bgh))
 
+###shot##
+bif = "play/img/fire.png"
+
+missil = pygame.image.load(bif).convert_alpha()
+missil = pygame.transform.scale(missil, (20,20))
+
 ##Obstacle##
-#obstacle = pygame.image.load("../img/fire.png").convert_alpha()
-#obstacle = pygame.transform.scale(obstacle, (0,0))
+bif = "play/img/pillar.png"
+obstacle = pygame.image.load(bif).convert_alpha()
+obstacle = pygame.transform.scale(obstacle, (50,50))
 
 ##img_Nave##
 #player_nave = pygame.image.load("../img/fire.png").convert_alpha()
-#player_nave = pygame.transform.scale(player_nave, (50,50))
+#player_nave = pygame.transform.scale(player_nave, (40,40))
 #player_nave = pygame.transform.rotate(player_nave, -45)
 
 ##player max possion##
@@ -113,8 +117,9 @@ while True:
             if event.key == K_SPACE or event.key == K_w:
                 gravity = 0
                 gravity -= 10
-    ##update screen##
+    ##blue square##
     pygame.draw.rect(screen, (0, 0, 255), (x_player, y_player, 40, 40))
+    ##update screen##
     pygame.display.update()
 
 
