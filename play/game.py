@@ -21,20 +21,21 @@ bg =  pygame.image.load(bif).convert_alpha()
 bg = pygame.transform.scale(bg, (bgw,bgh))
 
 ###shot##
-bif = "play/img/fire.png"
+bif_ = "play/img/fire.png"
 
 missil = pygame.image.load(bif).convert_alpha()
 missil = pygame.transform.scale(missil, (20,20))
 
 ##Obstacle##
-bif = "play/img/pillar.png"
-obstacle = pygame.image.load(bif).convert_alpha()
-obstacle = pygame.transform.scale(obstacle, (50,50))
+#bif = "play/img/pillar.png"
+#obstacle = pygame.image.load(bif).convert_alpha()
+#obstacle = pygame.transform.scale(obstacle, (50,50))
 
 ##img_Nave##
-#player_nave = pygame.image.load("../img/fire.png").convert_alpha()
-#player_nave = pygame.transform.scale(player_nave, (40,40))
-#player_nave = pygame.transform.rotate(player_nave, -45)
+bif = "play/img/nave.png"
+player_nave = pygame.image.load(bif).convert_alpha()
+player_nave = pygame.transform.scale(player_nave, (60,60))
+player_nave = pygame.transform.rotate(player_nave, -90)
 
 ##player max possion##
 min_y_player = 0
@@ -55,7 +56,7 @@ while True:
     clock.tick(framerate)
     screen.fill((0,0,0))
     y_player += gravity
-    gravity += 0.5
+    gravity += 0.35  
 
     ##fall death##
     if y_player >= max_y_player - 41 and gravity > 0:
@@ -86,7 +87,7 @@ while True:
         
         ##resize the window##
         if event.type == VIDEORESIZE:
-            if not fullscreen:
+            if not fullscreen:         
                 screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 x_player = event.w / 4
                 max_y_player = event.h
@@ -118,7 +119,8 @@ while True:
                 gravity = 0
                 gravity -= 10
     ##blue square##
-    pygame.draw.rect(screen, (0, 0, 255), (x_player, y_player, 40, 40))
+    screen.blit(player_nave, (x_player, y_player))
+    #pygame.draw.rect(screen, (0, 0, 255), (x_player, y_player, 40, 40))
     ##update screen##
     pygame.display.update()
 
