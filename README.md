@@ -40,8 +40,8 @@ $ python menu.py
 - [x] Estatísticas
 - [x] Sair
 ### Mecânica
-- [ ] Controles
-- [ ] Sprites
+- [x] Controles
+- [x] Sprites
 - [ ] Energia
 - [ ] Barreiras
 - [ ] Contador de barreiras
@@ -51,9 +51,9 @@ $ python menu.py
 - [x] Velocidade
 - [ ] Score
 ### Imagens & Design
-- [ ] Player
+- [x] Player
 - [ ] Barreiras
-- [ ] Background
+- [x] Background
 ### Extra
 - [ ] Usar sqlite na estatísticas
 - [ ] Adicionar easter eggs
