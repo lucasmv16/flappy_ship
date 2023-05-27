@@ -9,8 +9,7 @@ Antes de testar, Você precisar ter instalado em sua máquina as seguintes ferra
 
 ### Instalação Pygame & Pygame-menu
 ```Linux/Windows
-$ pip install -U pygame --user
-$ pip install pygame-menu -U
+$ pip install pygame pygame-menu
 ```
 
 ### Executando Flappy Ship
