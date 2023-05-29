@@ -1,28 +1,9 @@
 # flappy_ship
 Flappy ship é um jogo feito em python usando framework Pygame.
 
-# Pré-requisitos
-
-Antes de testar, Você precisar ter instalado em sua máquina as seguintes ferramentas:
-
-[Python 3.11](https://www.python.org/downloads/release/python-3113/), [Git](https://git-scm.com).
-
-### Instalação Pygame & Pygame-menu
-```Linux/Windows
-$ pip install pygame pygame-menu
-```
-
-### Executando Flappy Ship
-```
-# Clone este repositório
-$ git clone https://github.com/lucasmv16/flappy_ship.git
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd flappy_ship
-
-# Execute o jogo
-$ python main.py
-```
+### Como iniciar o jogo
+Baixe release mais recente correspodente ao seu sistema operacional
+Extraia e execute o arquivo main
 
 # Sprints
 1. 23/05 Terça-feira
