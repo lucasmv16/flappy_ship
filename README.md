@@ -21,7 +21,7 @@ $ git clone https://github.com/lucasmv16/flappy_ship.git
 $ cd flappy_ship
 
 # Execute o jogo
-$ python menu.py
+$ python main.py
 ```
 
 # Sprints
