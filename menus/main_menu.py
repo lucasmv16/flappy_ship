@@ -123,7 +123,7 @@ def OptionMenu():
         value_format=lambda x: str(int(x))
     )
 
-    option_menu.add.button('OK', menus.apply, align=pygame_menu.locals.ALIGN_LEFT)
+    option_menu.add.button('OK', menus.apply)
     option_menu.add.button('Back', MainMenu)
 
             # Habilitar o menu
