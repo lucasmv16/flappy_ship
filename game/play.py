@@ -11,6 +11,8 @@ def game():
     screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
     pygame.display.set_caption('Flappy Ship')
     clock = pygame.time.Clock()
+    ssw = sw/1.5
+    ssh = sh/1.5
 
     ##background##
     bif = './assets/images/bg-game.jpg'
@@ -51,8 +53,8 @@ def game():
     triggered = False
 
     ##position obstacle##  
-    pos_x_obstacle = 200
-    pos_y_obstacle = 300
+    pos_x_obstacle = ssw
+    pos_y_obstacle = 0
 
     ##player possion##
     x_player = (sw/1.5) / 4
@@ -78,7 +80,6 @@ def game():
         if rel_x < 2000:  
             screen.blit(bg, (rel_x,0))  
         bgw -= 6 #a velocidade do background
-        pos_x_obstacle -= 10 #a velocidade do obstaculo
 
         ##dont pass of screen##
         if y_player <= min_y_player and gravity < 0:
@@ -99,6 +100,8 @@ def game():
                     max_y_player = event.h
                     bgw = event.w
                     bgh = event.h
+                    ssw = event.w
+                    ssh =event.h
                     bg = pygame.transform.scale(bg, (bgw,bgh))
 
             ##teclas##
@@ -112,6 +115,8 @@ def game():
                         max_y_player = sh
                         bgw = sw
                         bgh = sh
+                        ssw = sw
+                        ssh = sh
                         bg = pygame.transform.scale(bg, (bgw,bgh))
                     else:
                         screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
@@ -119,6 +124,8 @@ def game():
                         max_y_player = sh/1.5
                         bgw = sw/1.5
                         bgh = sh/1.5
+                        ssw = sw/1.5
+                        ssh = sh/1.5
                         bg = pygame.transform.scale(bg, (bgw,bgh))
                 ##Jump##
                 if event.key == K_SPACE or event.key == K_w:
@@ -140,15 +147,18 @@ def game():
             pos_x_missil += vel_x_missil #fazendo o tiro ter o movimento
 
         ##death of shot##
-        if pos_x_missil >= sw/1.5 + 31:
+        if pos_x_missil >= ssw + 31:
             shot_back = True
             shot_moven = False
+        
+        ##wall##
+        pos_x_obstacle -= 10
 
                 
-        ##blue square##
+        ##shot, player and wall creation##
         screen.blit(missil, (pos_x_missil, pos_y_missil))
         screen.blit(player_nave, (x_player, y_player))
-        screen.blit(obstacle, (pos_x_obstacle,pos_y_obstacle))
+        pygame.draw.rect(screen, (0, 255, 0), (pos_x_obstacle, pos_y_obstacle, 100, ssh/1.75))
         
         ##update screen##
         pygame.display.update()
