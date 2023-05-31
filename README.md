@@ -29,15 +29,14 @@ Extraia e execute o arquivo main.
 - [x] Sprites
 - [ ] Energia
 - [ ] Barreiras
-- [ ] Contador de barreiras
-- [ ] Tiro
-- [ ] Dano
+- [x] Tiro
+- [ ] Quebrar barreira
 - [ ] Colisão
 - [x] Velocidade
 - [ ] Score
 ### Imagens & Design
 - [x] Player
-- [ ] Barreiras
+- [x] Barreiras
 - [x] Background
 ### Extra
 - [ ] Usar sqlite na estatísticas
