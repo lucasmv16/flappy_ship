@@ -2,10 +2,23 @@ import pygame, sys, time, random
 from pygame.locals import *
 from settings.screen import *
 from menus.menu_game import GameoverMenu, GameMenu
+import random
 
 pygame.init()
 
 def game():
+
+    def draw_obstalce(obstacle, obst, y_pos , player):
+        for i in range(len(obst)):
+            y_coord = y_pos[i]
+            obstacle = pygame.transform.scale(obstacle, (100,y_coord))
+            top_rect = screen.blit(obstacle, [obst[i], 0, 100, y_coord])
+            obstacle = pygame.transform.scale(obstacle, (100,ssh - (y_coord + 70)))
+            bot_rect = screen.blit(obstacle, [obst[i], y_coord + 275, 100, ssh - (y_coord + 70)])
+
+            if top_rect.colliderect(player) or bot_rect.colliderect(player):
+                GameoverMenu()
+
     ##screen##
     fullscreen = False
     screen = pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
@@ -30,7 +43,7 @@ def game():
     ##Obstacle##
     bif = "./assets/images/pilar.png"
     obstacle = pygame.image.load(bif).convert_alpha()
-    obstacle = pygame.transform.scale(obstacle, (100,100))
+    new_obstacle = True
 
     ##img_Nave##
     bif = "./assets/images/nave.png"
@@ -44,22 +57,24 @@ def game():
 
     ##shot speed##
     vel_x_missil = 0
-    pos_x_missil = sw/1.5 + 31
-    pos_y_missil = sh/1.5 + 31
+    pos_x_missil = -31
+    pos_y_missil = -31
     shot_moven = False
-    shot_back = False
-
-    ##shot##
-    triggered = False
+    shot_back = True
 
     ##position obstacle##  
-    pos_x_obstacle = ssw
-    pos_y_obstacle = 0
+    obstacles = [400, 700, 1000, 1300, 1600]
+    generate_places = True
+    pos_y_obstacle = []
 
     ##player possion##
     x_player = (sw/1.5) / 4
     y_player = (sh/1.5) / 4
     gravity = 0
+
+    ##score##
+    score = 0
+    font = pygame.font.Font('freesansbold.ttf', 20)
 
     ##Function for obstacle respawn##
     while True:
@@ -68,6 +83,11 @@ def game():
         screen.fill((0,0,0))
         y_player += gravity
         gravity += 0.35  
+
+        if generate_places:
+            for i in range(len(obstacles)):
+                pos_y_obstacle.append(random.randint(0, ssh - 200))
+            generate_places = False
 
         ##fall death##
         if y_player >= max_y_player - 41 and gravity > 0:
@@ -133,7 +153,6 @@ def game():
                     gravity -= 10
 
                 if event.key == K_e and not shot_moven or event.key == MOUSEBUTTONDOWN and not shot_moven:
-                    triggered = True
                     vel_x_missil = 10
                     shot_moven = True
 
@@ -151,14 +170,26 @@ def game():
             shot_back = True
             shot_moven = False
         
-        ##wall##
-        pos_x_obstacle -= 10
+        for i in range(len(obstacles)):
+            obstacles[i] -= 3
+            if obstacles[i] <= x_player and new_obstacle == True:
+                score += 10
+                new_obstacle = False
+            if obstacles[i] < -100:
+                obstacles.remove(obstacles[i])
+                pos_y_obstacle.remove(pos_y_obstacle[i])
+                obstacles.append(random.randint(obstacles[-1] + 280, obstacles[-1] + 320))
+                pos_y_obstacle.append(random.randint(0, int(ssh*0.6)))
+                new_obstacle = True
 
-                
+
+        score_text = font.render('Score: ' + str(score), True, (255, 255, 255))
+
         ##shot, player and wall creation##
         screen.blit(missil, (pos_x_missil, pos_y_missil))
-        screen.blit(player_nave, (x_player, y_player))
-        pygame.draw.rect(screen, (0, 255, 0), (pos_x_obstacle, pos_y_obstacle, 100, ssh/1.75))
-        
+        player = screen.blit(player_nave, (x_player, y_player))
+        draw_obstalce(obstacle, obstacles, pos_y_obstacle, player)
+        screen.blit(score_text, (0, 0))
+
         ##update screen##
         pygame.display.update()
