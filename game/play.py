@@ -74,6 +74,7 @@ def game():
 
     ##score##
     score = 0
+    progress = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
 
     ##Function for obstacle respawn##
@@ -174,6 +175,7 @@ def game():
             obstacles[i] -= 3
             if obstacles[i] <= x_player and new_obstacle == True:
                 score += 10
+                progress += 1
                 new_obstacle = False
             if obstacles[i] < -100:
                 obstacles.remove(obstacles[i])
