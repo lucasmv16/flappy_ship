@@ -1,7 +1,11 @@
-import pygame
-DISPLAY=pygame.display.set_mode((800, 600))
-SIZE=0.8
-WINDOW_SIZE=(800, 600)
+import pygame  # Library for game development and multimedia applications
+
+from settings.screen import sw, sh  # Screen width and height settings
+
+
+DISPLAY=pygame.display.set_mode(((sw/1.5), (sh/1.5)), pygame.RESIZABLE)
+SIZE=1
+WINDOW_SIZE=(sw/1.5, sh/1.5)
 PLAYER="default"
 SCORE=10
 
@@ -11,7 +15,7 @@ def retry():
     game()
 
 def back():
-    from menus.main_menu import MainMenu
+    from menus.interface import MainMenu
     MainMenu()
 
 def apply():

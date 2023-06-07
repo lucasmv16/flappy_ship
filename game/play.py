@@ -1,13 +1,40 @@
-import pygame, sys, time, random
-from pygame.locals import *
-from settings.screen import *
-from menus.menu_game import GameoverMenu, GameMenu
-import random
+
+import pygame  # Library for game development in Python
+import sys  # System-related functionalities and interactions
+import time  # Functions related to time and pauses
+import random  # Functions for generating random numbers
+import json  # Handling data in JSON format
+
+from pygame.locals import *  # Import constants and events from pygame.locals
+from settings.screen import *  # Screen configurations for the game
+from game.music import sound_effects, sound  # Sound effects and game music
+from menus.interface_ingame import GameoverMenu, GameMenu  # Game interfaces, such as the game over menu
+
+################################################
+### POR FAVOR LUCAS LEIA TUDO E FALE COMIGO.####
+################################################
+# TIRE A FUNÇÃO DRAW_OBSTALCE DE DENTRO DO JOGO
+# COLOCA TODAS AS VARS GLOBAL NO __INIT__.
+# CRIEI UMA FUNÇÃO PARA DETECTAR SE O JOGADOR -
+# MORREU.
+# MOVA O LOOP WHILE PARA O MAIN.PY.
+# COLOQUE O TIRO DENTRO DE UMA FUNÇÃO.
+# ARRUME O BACKGROUND.
+# TROQUE ESSA SPRITE DA BARREIRA.
+# ENVIE O SCORE E O PROGRESS PARA UM ARQUIVO -
+# PARA MIM USAR NO MENU.
+# POR FAVOR USE IMPORT.
+# TENTE DEMINUIR ESSES IF ELSE.
+# USE ELIF E NÃO IF.
+# ps. EU POSSO AJUDAR SE VC PEDIR
+################################################
+#### POR FAVOR LUCAS LEIA CLEAN CODE        ####
+################################################
 
 pygame.init()
 
 def game():
-
+    sound_effects(sound["soundtrank"])
     def draw_obstalce(obstacle, obst, y_pos , player):
         for i in range(len(obst)):
             y_coord = y_pos[i]
@@ -17,6 +44,8 @@ def game():
             bot_rect = screen.blit(obstacle, [obst[i], y_coord + 275, 100, ssh - (y_coord + 70)])
 
             if top_rect.colliderect(player) or bot_rect.colliderect(player):
+                pygame.mixer.music.stop()
+                sound_effects(sound["dead"])
                 GameoverMenu()
 
     ##screen##
@@ -76,6 +105,20 @@ def game():
     score = 0
     progress = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
+    #json
+    # Criar um dicionário com o score e o progresso
+    data = {
+        'score': score,
+        'progress': progress
+    }
+
+    # Converter o dicionário em JSON
+    json_data = json.dumps(data)
+
+    # Escrever o JSON no arquivo
+    with open('game_data.json', 'w') as file:
+        file.write(json_data)
+  
 
     ##Function for obstacle respawn##
     while True:
@@ -92,8 +135,9 @@ def game():
 
         ##fall death##
         if y_player >= max_y_player - 41 and gravity > 0:
+            pygame.mixer.music.stop()
+            sound_effects(sound["dead"])
             GameoverMenu()
-        
 
         ##Background move##
         rel_x = bgw % bg.get_rect().width
@@ -161,7 +205,10 @@ def game():
                         pos_x_missil = x_player
                         pos_y_missil = y_player
                         shot_back = False
-
+                #Pause
+                if event.key == pygame.K_ESCAPE:
+                    pygame.mixer.music.pause()
+                    GameMenu()
         
         if shot_moven == True:
             pos_x_missil += vel_x_missil #fazendo o tiro ter o movimento
@@ -177,6 +224,19 @@ def game():
                 score += 10
                 progress += 1
                 new_obstacle = False
+                # Criar um dicionário com o score e o progresso
+                data = {
+                    'score': score,
+                    'progress': progress
+                }
+
+                # Converter o dicionário em JSON
+                json_data = json.dumps(data)
+
+                # Escrever o JSON no arquivo
+                with open('game_data.json', 'w') as file:
+                    file.write(json_data)
+
             if obstacles[i] < -100:
                 obstacles.remove(obstacles[i])
                 pos_y_obstacle.remove(pos_y_obstacle[i])

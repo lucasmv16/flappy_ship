@@ -1,1 +1,6 @@
-__pycache__/
+game_data.json
+__pycache__/*
+./game/__pycache__/*
+./menus/__pycache__/*
+./settings/__pycache__/*
+
