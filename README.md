@@ -8,6 +8,8 @@ Extraia e execute o arquivo main.
 
 **Version** : 0.1
 
+![Version 0.1](screenshots/printgame.png)
+
 # Sprints
 1. 23/05 Terça-feira
 2. 30/05 Terça-feira
