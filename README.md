@@ -11,11 +11,12 @@ Extraia e execute o arquivo main.
 ![Version 0.1](screenshots/printgame.png)
 
 # Sprints
-1. 23/05 Terça-feira
-2. 30/05 Terça-feira
-3. 5/06, Segunda-feira
-5. Entrega 10/06
-
+- [x] 23/05 
+- [x] 30/05
+- [x] 06/06 versão: 0.1
+- [x] 09/06 Entrega Parte Escrita
+- [ ] 13/06
+- [ ] 20/06 Ultima Semana 
 # Backlog
 ### Menu
 - [x] Nome do jogo
@@ -28,12 +29,12 @@ Extraia e execute o arquivo main.
 - [x] Controles
 - [x] Sprites
 - [ ] Energia
-- [ ] Barreiras
+- [x] Barreiras
 - [x] Tiro
 - [ ] Quebrar barreira
-- [ ] Colisão
+- [x] Colisão
 - [x] Velocidade
-- [ ] Score
+- [x] Score
 ### Imagens & Design
 - [x] Player
 - [x] Barreiras
