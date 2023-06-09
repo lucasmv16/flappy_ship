@@ -11,12 +11,12 @@ Extraia e execute o arquivo main.
 ![Version 0.1](screenshots/printgame.png)
 
 # Sprints
-1. 23/05 
-2. 30/05 
-3. 06/06 versão: 0.1
-4. 09/06 Entrega Parte Escrita
-5. 13/06 
-6. 20/06 Ultima Semana
+- [x] 23/05 
+- [ ] 30/05
+- [ ] 06/06 versão: 0.1
+- [ ] 09/06 Entrega Parte Escrita
+- [ ] 13/06
+- [ ] 20/06 Ultima Semana 
 # Backlog
 ### Menu
 - [x] Nome do jogo
