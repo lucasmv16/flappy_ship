@@ -28,12 +28,12 @@ Extraia e execute o arquivo main.
 - [x] Controles
 - [x] Sprites
 - [ ] Energia
-- [ ] Barreiras
+- [x] Barreiras
 - [x] Tiro
 - [ ] Quebrar barreira
-- [ ] Colisão
+- [x] Colisão
 - [x] Velocidade
-- [ ] Score
+- [x] Score
 ### Imagens & Design
 - [x] Player
 - [x] Barreiras
