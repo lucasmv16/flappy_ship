@@ -13,27 +13,6 @@ from game.obstacle import generate_obs, new_obs
 from pygame.locals import *  # Import constants and events from pygame.locals
 from settings.screen import *  # Screen configurations for the game
 
-################################################
-### POR FAVOR LUCAS LEIA TUDO E FALE COMIGO.####
-################################################
-# TIRE A FUNÇÃO DRAW_OBSTALCE DE DENTRO DO JOGO
-# COLOCA TODAS AS VARS GLOBAL NO __INIT__.
-# CRIEI UMA FUNÇÃO PARA DETECTAR SE O JOGADOR -
-# MORREU.
-# MOVA O LOOP WHILE PARA O MAIN.PY.
-# COLOQUE O TIRO DENTRO DE UMA FUNÇÃO.
-# ARRUME O BACKGROUND.
-# TROQUE ESSA SPRITE DA BARREIRA.
-# ENVIE O SCORE E O PROGRESS PARA UM ARQUIVO -
-# PARA MIM USAR NO MENU.
-# POR FAVOR USE IMPORT.
-# TENTE DEMINUIR ESSES IF ELSE.
-# USE ELIF E NÃO IF.
-# ps. EU POSSO AJUDAR SE VC PEDIR
-################################################
-#### POR FAVOR LUCAS LEIA CLEAN CODE        ####
-################################################
-
 pygame.init()
 
 def start_game():
