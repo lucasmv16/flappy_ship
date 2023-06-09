@@ -12,9 +12,9 @@ Extraia e execute o arquivo main.
 
 # Sprints
 - [x] 23/05 
-- [ ] 30/05
-- [ ] 06/06 versão: 0.1
-- [ ] 09/06 Entrega Parte Escrita
+- [x] 30/05
+- [x] 06/06 versão: 0.1
+- [x] 09/06 Entrega Parte Escrita
 - [ ] 13/06
 - [ ] 20/06 Ultima Semana 
 # Backlog
