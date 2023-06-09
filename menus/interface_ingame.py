@@ -31,7 +31,7 @@ def GameoverMenu():
     game_score = "Barreiras " + str(progress) + "/20" "\nscore " + str(score)
     gameover_menu.add.label(game_score, font_color=(255, 255, 255), align=pygame_menu.locals.ALIGN_CENTER, font_size=40)
     gameover_menu.add.button('Retry', menus.retry)
-    gameover_menu.add.button('Quit', pygame_menu.events.EXIT)
+    gameover_menu.add.button('Quit', menus.quit)
     gameover_menu.add.button('Main Menu', menus.back)
     
     gameover_menu.enable()

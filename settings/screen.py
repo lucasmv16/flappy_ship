@@ -1,6 +1,3 @@
-from tkinter import Tk  # Library for creating GUI applications using Tkinter
-
-
-sw = Tk().winfo_screenwidth()
-sh = Tk().winfo_screenheight()
-framerate = 30
+sw = 1280
+sh = 720
+framerate = 60
