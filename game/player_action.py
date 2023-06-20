@@ -1,7 +1,11 @@
 import game
 import pygame
+import os
 
+from pygame import mixer
 from menus.interface_ingame import GameMenu  # Game interfaces
+from game.music import sound_effects, sound  # Sound effects and game music
+
 
 def player_jump():
     game.gravity = 0

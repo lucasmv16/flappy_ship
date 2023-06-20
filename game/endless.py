@@ -1,8 +1,8 @@
 import pygame  # Library for game development in Python
 import os
 import game
- 
-from game.draw import draw_itens #draw itens on the screen
+
+from game.draw import draw_itens
 from game.shot import shot_move, death_shot #Import shot action 
 from game.player_action import player_jump, shooting, pause #Import player action
 from game.background import bg_move #Import background action
@@ -15,8 +15,9 @@ from settings.screen import *  # Screen configurations for the game
 
 pygame.init()
 
-def start_game():
+def start_endless():
     reset()
+    game.endless = True
     json_score()  
 
     font = pygame.font.Font('freesansbold.ttf', 30)
@@ -26,7 +27,7 @@ def start_game():
         ##reset##
         game.clock.tick(framerate)
         game.y_player += game.gravity
-        game.gravity += 0.35 * (game.vel/6)
+        game.gravity += 0.35  
 
         generate_obs()
 
@@ -62,16 +63,10 @@ def start_game():
             death_shot()
         
         new_obs()
-
-        ##test zone##
-        if game.progress == 15:
-            game.stop_create = True
-        if game.progress == 20 and game.vel > 0 and game.i >= 20:
-            game.vel -= 1
-            game.x_heart -= game.vel_stop
-            game.i = 0
-        game.i+= 1
-        #############
+        
+        if game.progress == game.speed_end:
+            game.vel += 1
+            game.speed_end += game.progress
 
         draw_itens()
 

@@ -1,8 +1,3 @@
-import pygame  # Library for game development in Python
-import sys  # System-related functionalities and interactions
-import time  # Functions related to time and pauses
-import random  # Functions for generating random numbers
-import json  # Handling data in JSON format
 import game
 
 from pygame.locals import *  # Import constants and events from pygame.locals
@@ -15,6 +10,8 @@ def reset():
     ##background##
     game.bgw = sw
     game.bgh = sh
+    game.vel = 6
+    game.x_heart = sw
 
     ##player##
     game.x_player = sw / 4
@@ -38,7 +35,15 @@ def reset():
     game.obstacles = [700, 1200, 1700, 2200, 2700]
     game.generate_places = True
     game.pos_y_obstacle = []
+    game.stop_create = False
+
+    game.des_obstacles = []
+    game.y_des_obstacles = []
+
 
     ##score##
     game.score = 0
     game.progress = 0
+
+    ##endless##
+    game.speed_end = 10

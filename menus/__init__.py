@@ -16,14 +16,13 @@ def retry():
     from game.play import start_game
     start_game()
 
-def quit():
-    os.remove('game_data.json')
-    pygame_menu.events.EXIT
-
 def back():
     from menus.interface import MainMenu
-    os.remove('game_data.json')
     MainMenu()
 
 def apply():
     pass
+
+def endless():
+    from game.endless import start_endless
+    start_endless()
