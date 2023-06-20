@@ -26,7 +26,7 @@ def start_game():
         ##reset##
         game.clock.tick(framerate)
         game.y_player += game.gravity
-        game.gravity += 0.35 * (game.vel/6)
+        game.gravity += 0.35
 
         generate_obs()
 
