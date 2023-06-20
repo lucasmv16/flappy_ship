@@ -40,14 +40,12 @@ missil = pygame.image.load(bif).convert_alpha()
 missil = pygame.transform.scale(missil, (60,60))
 
 vel_x_missil = 0
-pos_x_missil = -31
-pos_y_missil = -31
+pos_x_missil = -61
+pos_y_missil = -61
 shot_moven = False
 shot_back = True
 
 ##obstacle##  
-bif = "./assets/images/pilar.png"
-obstacle = pygame.image.load(bif).convert_alpha()
 new_obstacle = True
 
 obstacles = [700, 1200, 1700, 2200, 2700]
@@ -60,6 +58,12 @@ y_des_obstacles = []
 ##score##
 score = 0
 progress = 0
+
+##mothership heart##
+bif = "./assets/images/mothership_heart.png"
+mothership_heart = pygame.image.load(bif).convert_alpha()
+mothership_heart = pygame.transform.scale(missil, (306,336))
+
 
 ##endless##
 endless = False

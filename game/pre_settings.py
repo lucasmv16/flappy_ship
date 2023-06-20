@@ -24,8 +24,8 @@ def reset():
 
     ##shot##
     game.vel_x_missil = 0
-    game.pos_x_missil = -31
-    game.pos_y_missil = -31
+    game.pos_x_missil = -61
+    game.pos_y_missil = -61
     game.shot_moven = False
     game.shot_back = True
 

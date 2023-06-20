@@ -58,8 +58,11 @@ def OptionMenu():
 ###
 
 def reset_all():
-    os.remove('game_perm_data.json')
-    MainMenu()
+    try:
+        os.remove('game_perm_data.json')
+        MainMenu()
+    except:
+        MainMenu()
 
 ### Class Score
 class Score:

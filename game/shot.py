@@ -8,8 +8,8 @@ def shot_move():
             game.pos_x_missil += game.vel_x_missil #fazendo o tiro ter o movimento
 
 def death_shot():
-    game.pos_x_missil = -31
-    game.pos_y_missil = -31
+    game.pos_x_missil = -61
+    game.pos_y_missil = -61
     game.shot_back = True
     game.shot_moven = False
 
