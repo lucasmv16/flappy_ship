@@ -20,10 +20,8 @@ def GameoverMenu():
     with open('game_data.json', 'r') as file:
         json_data = file.read()
 
-    # Converter o JSON de volta para um dicionário
     data = json.loads(json_data)
 
-    # Acessar o score e o progresso no dicionário
     score = data['score']
     progress = data['progress']
 
@@ -46,19 +44,16 @@ def GameoverMenu():
     
     gameover_menu.enable()
     gameover_menu.mainloop(menus.DISPLAY)
-###
 
-##Victory##
+### Victory ###
 def VictoryMenu():
     perm_json()
-        # Ler o JSON do arquivo
+    
     with open('game_data.json', 'r') as file:
         json_data = file.read()
-
-    # Converter o JSON de volta para um dicionário
+    
     data = json.loads(json_data)
 
-    # Acessar o score e o progresso no dicionário
     score = data['score']
     progress = data['progress']
 
@@ -66,17 +61,17 @@ def VictoryMenu():
     
 
     endexits = os.path.exists('game_perm_data.json')
-    # Ler o JSON do arquivo
+
     Endless = False
 
     if endexits == True:
         with open('game_perm_data.json', 'r') as file:
             json_data = file.read()
 
-            # Converter o JSON de volta para um dicionário
+           
             data = json.loads(json_data)
 
-            # Acessar o score e o progresso no dicionário
+            
             try:
                 Endless = data['endless']
             except:
@@ -89,17 +84,16 @@ def VictoryMenu():
         with open('game_perm_data.json', 'r') as file:
             json_data = file.read()
 
-        # Converter o JSON de volta para um dicionário
+       
         data = json.loads(json_data)
 
         file.close()
-            #json
-            # Criar um dicionário com o game.score e o progresso
+
         data["endless"] = True
-            # Converter o dicionário em JSON
+
         json_data = json.dumps(data)
 
-        # Escrever o JSON no arquivo
+       
         with open('game_perm_data.json', 'w') as file:
             file.write(json_data)
 
@@ -120,7 +114,6 @@ def VictoryMenu():
     gameover_menu.add.button('Main Menu', menus.back)
     gameover_menu.enable()
     gameover_menu.mainloop(menus.DISPLAY)
-###
 
 ### GAMEOVER ENDLESS ###
 def GameoverEndMenu():
