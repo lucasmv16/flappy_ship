@@ -7,13 +7,13 @@ from game.music import sound_effects, sound  # Sound effects and game music
 def reset():
     sound_effects(sound["soundtrank"])
 
-    ##background##
+    # Background
     game.bgw = sw
     game.bgh = sh
     game.vel = 6
     game.x_heart = sw
 
-    ##player##
+    # Player
     game.x_player = sw / 4
     game.y_player = sh / 4
     game.gravity = 0
@@ -22,14 +22,14 @@ def reset():
     game.min_y_player = 0
     game.max_y_player = sh
 
-    ##shot##
+    # Shot
     game.vel_x_missil = 0
     game.pos_x_missil = -61
     game.pos_y_missil = -61
     game.shot_moven = False
     game.shot_back = True
 
-    ##obstacle##  
+    # Obstacle
     game.new_obstacle = True
 
     game.obstacles = [700, 1200, 1700, 2200, 2700]
@@ -41,9 +41,9 @@ def reset():
     game.y_des_obstacles = []
 
 
-    ##score##
+    # Score
     game.score = 0
     game.progress = 0
 
-    ##endless##
+    # Endless
     game.speed_end = 10
