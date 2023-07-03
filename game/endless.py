@@ -22,9 +22,9 @@ def start_endless():
 
     font = pygame.font.Font('freesansbold.ttf', 30)
 
-    ##Function for obstacle respawn##
+    ### Function for obstacle respawn ###
     while True:
-        ##reset##
+        ### reset ###
         game.clock.tick(framerate)
         game.y_player += game.gravity
         game.gravity += 0.35  
@@ -37,23 +37,23 @@ def start_endless():
 
         bg_move()
 
-        ##exit button##
+        ### exit button ###
         for event in pygame.event.get():
             if event.type == QUIT:
                 os.remove('game_data.json') #delete json
                 pygame.quit()
                 exit()
 
-            ##teclas##
+            ### controller ###
             if event.type == KEYDOWN:  
-                ##Jump##
+                # Jump
                 if event.key == K_SPACE or event.key == K_w:
                     player_jump()
 
-                ##shooting##
+                # Shot
                 if event.key == K_e and not game.shot_moven or event.key == K_p and not game.shot_moven:
                     shooting()
-                #Pause
+                # Pause
                 if event.key == pygame.K_ESCAPE:
                     pause()
         
@@ -70,9 +70,9 @@ def start_endless():
 
         draw_itens()
 
-        ##write your score on screen##
+        ### write your score on screen ###
         score_text = font.render('Score: ' + str(game.score), True, (255, 255, 255))
         game.screen.blit(score_text, (0, 0))
 
-        ##update screen##
+        ### update screen ###
         pygame.display.update()
