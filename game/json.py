@@ -3,17 +3,16 @@ import game
 import os
 
 def json_score():
-    #json
-    # Criar um dicionário com o game.score e o progresso
+    
     data = {
         'score': game.score,
         'progress': game.progress
     }
 
-    # Converter o dicionário em JSON
+   
     json_data = json.dumps(data)
 
-    # Escrever o JSON no arquivo
+    
     with open('game_data.json', 'w') as file:
         file.write(json_data)
     
@@ -51,10 +50,10 @@ def perm_json():
                 update = True
     best_score.sort(reverse=True)
     data["score"] = best_score
-    # Converter o dicionário em JSON
+   
     json_data = json.dumps(data)
 
-    # Escrever o JSON no arquivo
+   
     with open('game_perm_data.json', 'w') as file:
         file.write(json_data)
     
