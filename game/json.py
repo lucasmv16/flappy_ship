@@ -26,7 +26,7 @@ def perm_json():
         with open('game_perm_data.json', 'r') as file:
             json_data = file.read()
 
-            # Converter o JSON de volta para um dicionário
+            
         data = json.loads(json_data)
         file.close()
     update = False
