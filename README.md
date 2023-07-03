@@ -8,4 +8,4 @@ Extraia e execute o arquivo main.
 
 **Version** : 0.1
 
-![Version 0.1](screenshots/printgame.png)
+![Version 0.1](gameplay-v0.1.png)
