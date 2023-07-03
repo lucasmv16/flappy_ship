@@ -6,4 +6,4 @@ def bg_move():
     if rel_x < 2000:  
         game.screen.blit(game.bg, (rel_x,0)) 
     if game.vel != 0:
-        game.bgw -= game.vel - 1#a velocidade do background
+        game.bgw -= game.vel - 1 # background velocity
