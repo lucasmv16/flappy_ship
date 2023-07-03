@@ -6,6 +6,6 @@ Baixe release mais recente correspodente ao seu sistema operacional.
 
 Extraia e execute o arquivo main.
 
-**Version** : 0.2
+**Version** : 0.1
 
 ![Version 0.1](screenshots/printgame.png)
