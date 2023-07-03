@@ -5,7 +5,7 @@ from menus.interface_ingame import VictoryMenu
 
 def shot_move():
     if game.shot_moven == True:
-            game.pos_x_missil += game.vel_x_missil #fazendo o tiro ter o movimento
+            game.pos_x_missil += game.vel_x_missil
 
 def death_shot():
     game.pos_x_missil = -61
